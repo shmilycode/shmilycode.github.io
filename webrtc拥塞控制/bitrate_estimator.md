@@ -74,7 +74,7 @@ bitrate_estimate_var_ = sample_var * pred_bitrate_estimate_var /
                         (sample_var + pred_bitrate_estimate_var);
 ```
 
-# 画图
+# 可视化
 
 通过公式还不是特别明显，我们通过图像来展示下。
 
