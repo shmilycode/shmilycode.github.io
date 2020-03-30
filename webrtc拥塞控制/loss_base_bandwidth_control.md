@@ -16,10 +16,9 @@ $$
 S_t=\begin{cases}
 Y_1,\quad t = 1 \\\\
 \alpha \cdot Y_t + (1 - \alpha) \cdot S_{t-1},\quad x>0
-\end{cases} \tag{1}
+\end{cases} \tag{1}" \>
 $$
 
-其中：
 
 - 系数 $α$ 表示权重下降的程度，它是介于0和1之间的恒定平滑因子。较高的 $α$ 会使较早的观测值更快地降低权重。
 
