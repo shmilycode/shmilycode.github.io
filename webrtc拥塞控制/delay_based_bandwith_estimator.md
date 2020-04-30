@@ -122,16 +122,16 @@ $$
 为了从一组样本 $(y_i, x_i)$（其中 $i = 1,\  2, \ldots, n$ ）之中估计最合适（误差最小）的 $\alpha$ 和$\beta$ ，通常采用最小二乘法，其计算目标为最小化残差平方和：
 
 $$
-\sum _{{i=1}}^{n}\varepsilon _{i}^{2}=\sum _{{i=1}}^{n}(y_{i}-\alpha -\beta x_{i})^{2}
+\sum_{i=1}^{n}\varepsilon _{i}^{2}=\sum_{i=1}^{n}(y_{i}-\alpha -\beta x_{i})^{2}
 $$
 
 使用微分法求极值：将上式分别对$\alpha$ 和 $\beta$ 做一阶偏微分，并令其等于0：
 
 $$
-\left\{\begin{array}{lcl}
-n\  \alpha + \sum\limits_{i = 1}^n x_i\  \beta = \sum\limits_{i = 1}^n y_i \\
+\begin{cases}
+n\ \alpha + \sum\limits_{i = 1}^n x_i\  \beta = \sum\limits_{i = 1}^n y_i \\
 \sum\limits_{i = 1}^n x_i\  \alpha + \sum\limits_{i = 1}^n x_i^2\  \beta = \sum\limits_{i = 1}^n x_i y_i
-\end{array}\right.
+\end{cases}
 $$
 
 此二元一次线性方程组可用克莱姆法则求解，得解$\hat\alpha,\  \hat\beta$：
