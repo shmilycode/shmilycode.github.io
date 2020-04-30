@@ -15,8 +15,8 @@ $Y$ 序列的 `EMA` 通过可以递归计算得到：
 $$
 S_t=\begin{cases}
 Y_1,\quad t = 1 \\\\
-\alpha \cdot Y_t + (1 - \alpha) \cdot S_{t-1},\quad x>0
-\end{cases} \tag{1}" \>
+\alpha \cdot Y_t + (1 - \alpha) \cdot S_{t-1},\quad t>1
+\end{cases} \tag{1}
 $$
 
 

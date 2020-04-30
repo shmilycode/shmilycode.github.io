@@ -343,7 +343,7 @@ XR 头部格式如下：
 
 具体块类型不做介绍，太多了。
 
-## transfport feedback
+## transport feedback
 
 定义在[draft-holmer-rmcat-transport-wide-cc-extensions] 中，在 `webrtc` 中实现于transport_feedback.cc，也就是文章中提到的 `Transport-CC feedback`，具体内容请参考 另一篇文章[transport-wide-cc-extension]。
 
