@@ -1,4 +1,4 @@
-基于延迟的带宽控制算法实现于 `webrtc` 的发送端。根据[draf-ietf-rmcat-gcc-02]中的描述，它可以被分成四个部分：一个预过滤器（`pre-filtering`），一个到达时间过滤器（实际代码中是一个简单线性回归模型），一个过载检测器（`over-use detector`）和一个速率控制器（`rate controller`）。
+新版本的基于延迟的带宽控制算法实现于 `webrtc` 的发送端。根据[draf-ietf-rmcat-gcc-02]中的描述，它可以被分成四个部分：一个预过滤器（`pre-filtering`），一个到达时间过滤器（实际代码中是一个简单线性回归模型），一个过载检测器（`over-use detector`）和一个速率控制器（`rate controller`）。
 
 基于延迟的带宽控制算法主要实现于 `DelayBasedBwe` 和 `TrendLineEstimation` 这两个类中。在接收到一个 `RTCP Feedback` 包后，`DelayBasedBwe` 会简单计算出延迟相关的参数，然后交给 `TrendLineEstimation` 通过简单线性回归和特定的数学模型，得出当前网络状态的预测值。这篇文章将基于 `webrtc` 的源码，分析上面提到的这四个部分中的前三个的实现及其原理，探究如何通过延迟得到正确的网络状态，与 `AIMD` 速率控制相关的内容在另一篇文件中介绍。
 
@@ -55,7 +55,7 @@ void DelayBasedBwe::IncomingPacketFeedback(const PacketResult& packet_feedback,
 
 # 简单线性回归模型
 
-在 [draf-ietf-rmcat-gcc-02] 中提到，这里应该实现一个基于卡尔曼过滤器的到达时间过滤器。但其实早在2016年的[修改项中](https://webrtc.googlesource.com/src/+/afaef8bbebb8aecd32b3b7c5e47d60fd5526a126)，卡尔曼滤波器就被替换成了一个线性回归模型，所以需要以线性回归模型来理解这部分的逻辑，而不能根据标准中提到的内容去理解。
+在 [draf-ietf-rmcat-gcc-02] 中提到，这里应该实现一个基于卡尔曼过滤器的到达时间过滤器。但其实早在2016年的[修改项中](https://webrtc.googlesource.com/src/+/afaef8bbebb8aecd32b3b7c5e47d60fd5526a126)，将带宽预测算法全部移到发送端实现后，在接收端实现的卡尔曼滤波器，就被替换成了在发送端的一个简单线性回归模型，所以需要以简单线性回归模型来理解这部分的逻辑，而不能根据标准中提到的内容去理解。
 
 以 $d_i$ 为时间 $i$ 时的组间延迟变化量，以 $S_i$ 为时间 $i$ 时延迟变化量的累加，$Y_i$ 为 $S_i$ 指数平滑后的结果，则有：
 
@@ -263,7 +263,7 @@ $$
 status=\begin{cases}
 1,\quad over-use \\
 0,\quad normal \\
-1,\quad under-use \\
+-1,\quad under-use \\
 \end{cases}
 $$
 
