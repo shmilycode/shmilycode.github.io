@@ -155,8 +155,8 @@ void OveruseEstimator::Update(int64_t t_delta,
 $$
 X(k-1|k-1) = \left[
  \begin{matrix}
-   slope\underline{\hspace{5px}} \\
-   offset\underline{\hspace{5px}} \\
+   slope\underline{\hspace{5px}} \\\\
+   offset\underline{\hspace{5px}}
   \end{matrix}
   \right]
 $$
@@ -167,8 +167,8 @@ $$
 process\underline{\hspace{5px}}noise\underline{\hspace{5px}} =
 \left[
   \begin{matrix}
-    1e^{-13} \\\
-    1e^{-3} \\\
+    1e^{-13} \\\\
+    1e^{-3}
   \end{matrix}
 \right]
 $$
@@ -178,7 +178,7 @@ $$
 $$
 h = \left[
  \begin{matrix}
-   fs\underline{\hspace{5px}}delta & 1.0 \\\
+   fs\underline{\hspace{5px}}delta & 1.0 \\\\
   \end{matrix}
   \right]
 $$
@@ -189,8 +189,8 @@ $$
 E\underline{\hspace{5px}} = 
 \left[
  \begin{matrix}
-   100.0 & 0.0 \\\
-   0.0   & 1e^{-1} \\\
+   100.0 & 0.0 \\\\
+   0.0   & 1e^{-1}
   \end{matrix}
 \right]
 $$
