@@ -155,8 +155,8 @@ void OveruseEstimator::Update(int64_t t_delta,
 $$
 X(k-1|k-1) = \left[
  \begin{matrix}
-   slope \\
-   offset \\
+   slope\underline{\hspace{5px}} \\
+   offset\underline{\hspace{5px}} \\
   \end{matrix}
   \right]
 $$
@@ -164,7 +164,7 @@ $$
 控制过程协方差 $Q$ 初始化为：
 
 $$
-process\_noise_ =
+process\underline{\hspace{5px}}noise\underline{\hspace{5px}} =
 \left[
   \begin{matrix}
     1e^{-13} \\
@@ -178,7 +178,7 @@ $$
 $$
 h = \left[
  \begin{matrix}
-   fs\_delta & 1.0 \\
+   fs\underline{\hspace{5px}}delta & 1.0 \\
   \end{matrix}
   \right]
 $$
@@ -186,7 +186,7 @@ $$
 协方差矩阵 P(k-1|k-1) 初始化为：
 
 $$
-E\_ = 
+E\underline{\hspace{5px}} = 
 \left[
  \begin{matrix}
    100.0 & 0.0 \\
@@ -198,7 +198,7 @@ $$
 系统测量值 $Z(k)$ 赋值为：
 
 $$
-Z(k) = t\_ts\_delta;
+Z(k) = t\underline{\hspace{5px}}ts\underline{\hspace{5px}}delta;
 $$
 
 然后逐步代入第二节中提到的递归过程。
@@ -211,12 +211,12 @@ $$
 
 先求得部分结果存入变量中：
 $$
-Eh = E\_ \cdot h^T
+Eh = E\underline{\hspace{5px}} \cdot h^T
 $$
 
 $$
 \begin{aligned}
-denom = var\_noise + h \cdot E\_ \cdot h^T = var\_noise + h \cdot Eh
+denom = var\underline{\hspace{5px}}noise + h \cdot E\underline{\hspace{5px}} \cdot h^T = var\underline{\hspace{5px}}noise + h \cdot Eh
 \end{aligned}
 $$
 
@@ -238,7 +238,7 @@ IKh = I - Kg(k) \cdot h^T
 $$
 
 $$
-E\_ = IKh \cdot E\_
+E\underline{\hspace{5px}} = IKh \cdot E\underline{\hspace{5px}}
 $$
 
 $I$ 为2阶单位矩阵，原公式中用1表示一价单位矩阵。
@@ -253,7 +253,7 @@ $$
 估计测量噪音使用一个指数平均过滤器进行更新:
 
 $$
-var\_noise(x) = \alpha \cdot var\_noise(x-1) + (1-\alpha) \cdot residual^2
+var\underline{\hspace{5px}}noise(x) = \alpha \cdot var\underline{\hspace{5px}}noise(x-1) + (1-\alpha) \cdot residual^2
 $$
 
 # 过载检测器 
