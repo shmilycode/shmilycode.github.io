@@ -131,8 +131,7 @@ void OveruseEstimator::Update(int64_t t_delta,
   // 卡尔曼增益
   const double K[2] = {Eh[0] / denom, Eh[1] / denom};
 
-  const double IKh[2][2] = {{1.0 - K[0] * h[0], -K[0] * h[1]},
-                            {-K[1] * h[0], 1.0 - K[1] * h[1]}};
+  const double IKh[2][2] = {{1.0 - K[0] * h[0], -K[0] * h[1]},{-K[1] * h[0], 1.0 - K[1] * h[1]}};
   const double e00 = E_[0][0];
   const double e01 = E_[0][1];
 
