@@ -1,5 +1,7 @@
 # SDP: Session Description Protocol
 
+RFC3266
+
 Copyright Notice
    Copyright (C) The Internet Society (2006).
 
@@ -587,7 +589,7 @@ NTP的时间戳在其他地方用64位的值来表示，所以在2036年的时�
 
     这个属性从一个RTP有效载荷类型号（如在 "m="行中使用）映射到一个表示要使用的有效载荷格式的编码名称。它还提供了时钟速率和编码参数的信息。它是一个媒体级属性，不依赖于字符集。
 
-    虽然 RTP profile 可以对有效载荷格式的有效载荷类型号进行静态分配，但更常见的是使用 "a=rtpmap:" 属性进行动态分配。作为静态有效载荷类型的一个例子，考虑 u-law PCM 编码的8kHz采样单通道音频，这在RTP Audio/Video profile 中被完全定义为有效载荷类型号为 0，所以不需要 "a=rtpmap: "属性，而且发送到UDP端口49232的这种流的媒体可以被指定为:
+    虽然 RTP profile 可以对有效载荷格式的有效载荷类型号进行静态分配，但更常见的是使用 "a=rtpmap:" 属性进行动态分配。作为静态有效载荷类型的一个例子，考虑 u-law PCM 编码的8kHz采样单通道音频，这在RTP Audio/Video profile 中被完全定义，有效载荷类型号为 0，所以不需要 "a=rtpmap: "属性，所以发送到UDP端口49232的这种流的媒体可以被指定为:
 
         m=audio 49232 RTP/AVP 0
     
